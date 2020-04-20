@@ -88,7 +88,8 @@ class Student
       SELECT * FROM students WHERE grade < 12;
     SQL
 
-    DB[:conn].execute(sql)
+    array = DB[:conn].execute(sql)
+    binding.pry
   end
 
   def self.first_X_students_in_grade_10(num)
