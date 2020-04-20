@@ -110,7 +110,7 @@ class Student
       SELECT * FROM students WHERE grade = 10 LIMIT 1;
     SQL
 
-    array = DB[:conn].execute(sql, num).collect { |row|
+    array = DB[:conn].execute(sql).collect { |row|
       new_from_db(row)
     }
   end
@@ -120,7 +120,7 @@ class Student
       SELECT * FROM students WHERE grade = ?
     SQL
 
-    array = DB[:conn].execute(sql, num).collect { |row|
+    array = DB[:conn].execute(sql, grade).collect { |row|
       new_from_db(row)
     }
   end
