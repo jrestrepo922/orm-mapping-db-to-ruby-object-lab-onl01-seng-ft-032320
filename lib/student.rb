@@ -35,12 +35,12 @@ class Student
 
     #arraybefore = DB[:conn].execute(sql, name) #[[1, "Pat", "12"]]
 
-    
+
     # arrayafter = DB[:conn].execute(sql, name).collect { |row|
     #   self.new_from_db(row)
     # }
     # [#<Student:0x0000000002dcf760 @grade="12", @id=1, @name="Pat">]
-    
+
     DB[:conn].execute(sql, name).collect { |row|
       self.new_from_db(row)
     }.first
