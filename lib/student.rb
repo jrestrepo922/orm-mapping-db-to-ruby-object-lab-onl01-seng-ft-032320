@@ -12,6 +12,11 @@ class Student
 
   def self.all
     # retrieve all the rows from the "Students" database
+    sql = <<-SQL
+      SELECT * FROM students
+    SQL
+    array = DB[:conn].execute(sql)# this retuns an array within an array that contains [id, name, grade]
+    binding.pry
     # remember each row should be a new instance of the Student class
   end
 
