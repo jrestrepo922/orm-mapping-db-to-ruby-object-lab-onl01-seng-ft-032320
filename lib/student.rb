@@ -102,7 +102,7 @@ class Student
     array = DB[:conn].execute(sql, num).collect { |row|
       new_from_db(row)
     }
-    binding.pry
+
   end
 
   def self.first_student_in_grade_10
