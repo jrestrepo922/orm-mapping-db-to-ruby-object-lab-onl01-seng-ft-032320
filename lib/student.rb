@@ -20,7 +20,7 @@ class Student
 
     # this retuns an array within an array that contains [[1, "Pat", "12"], [2, "Sam", "10"]]
     # remember each row should be a new instance of the Student class
-    DB[:conn].execute(sql).each { |student|
+    DB[:conn].execute(sql).collect { |student|
       self.new_from_db(student)
     }
   end
