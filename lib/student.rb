@@ -113,7 +113,8 @@ class Student
     array = DB[:conn].execute(sql).collect { |row|
       new_from_db(row)
     }
-  end.first
+  end
+
 
   def self.all_students_in_grade_X(grade)
     sql = <<-SQL
