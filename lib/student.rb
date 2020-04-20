@@ -17,9 +17,12 @@ class Student
     sql = <<-SQL
       SELECT * FROM students
     SQL
-    array = DB[:conn].execute(sql)# this retuns an array within an array that contains [id, name, grade]
-    binding.pry
+
+    # this retuns an array within an array that contains [[1, "Pat", "12"], [2, "Sam", "10"]]
     # remember each row should be a new instance of the Student class
+    array = DB[:conn].execute(sql).each { |student|
+      self.new_from_db(student)
+    }
   end
 
   def self.find_by_name(name)
