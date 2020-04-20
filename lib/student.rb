@@ -110,11 +110,11 @@ class Student
       SELECT * FROM students WHERE grade = 10 LIMIT 1;
     SQL
 
-    array = DB[:conn].execute(sql).collect { |row|
+    DB[:conn].execute(sql).collect { |row|
       new_from_db(row)
     }
-    binding.pry
-  end
+    
+  end.first
 
 
   def self.all_students_in_grade_X(grade)
