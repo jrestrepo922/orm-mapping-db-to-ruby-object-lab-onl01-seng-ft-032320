@@ -113,6 +113,7 @@ class Student
     array = DB[:conn].execute(sql).collect { |row|
       new_from_db(row)
     }
+    binding.pry
   end
 
 
