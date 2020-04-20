@@ -32,10 +32,11 @@ class Student
     sql = <<-SQL
       SELECT * FROM students WHERE name = ? LIMIT 1;
     SQL
-
-    array = DB[:conn].execute(sql, name).collect { |row|
+    arraybefore = DB[:conn].execute(sql, name)
+    arrayafter = DB[:conn].execute(sql, name).collect { |row|
       self.new_from_db(row)
     }
+
   end
 
   def save
