@@ -20,7 +20,7 @@ class Student
 
     # this retuns an array within an array that contains [[1, "Pat", "12"], [2, "Sam", "10"]]
     # remember each row should be a new instance of the Student class
-    array = DB[:conn].execute(sql).each { |student|
+    DB[:conn].execute(sql).each { |student|
       self.new_from_db(student)
     }
   end
@@ -28,6 +28,14 @@ class Student
   def self.find_by_name(name)
     # find the student in the database given a name
     # return a new instance of the Student class
+
+    sql = <<-SQL
+      SELECT * FROM students WHERE name = ? LIMIT 1;
+    SQL
+
+    array = DB[:conn].execute(sql, name).collect { |row|
+      self.new_from_db(row)
+    }
   end
 
   def save
